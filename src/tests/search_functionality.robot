@@ -1,6 +1,6 @@
 *** Settings ***
 Documentation                   Basic Search Functionality
-Resource                        ../Resources/CommonFunctionality.robot
+Resource                        ../resources/CommonFunctionality.robot
 Resource                        ../PageObjects/HeaderPage.robot
 Resource                        ../PageObjects/SearchResultsPage.robot
 Test Setup                      Start TestCase
