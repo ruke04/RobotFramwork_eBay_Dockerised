@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.8 on linux)" generated="20221018 05:03:21.456" rpa="false" schemaversion="3">
+<suite id="s1" name="Tests" source="/usr/src/project/tests">
+<suite id="s1-s1" name="Search Functionality" source="/usr/src/project/tests/search_functionality.robot">
+<test id="s1-s1-t1" name="Verify basic search functionality for eBay" line="10">
+<kw name="Start TestCase" library="CommonFunctionality" type="SETUP">
+<kw name="Get Driver Path With Browser" library="chromedriversync">
+<var>${driver_path}</var>
+<arg>chrome</arg>
+<msg timestamp="20221018 05:03:21.699" level="INFO">====== WebDriver manager ======</msg>
+<msg timestamp="20221018 05:03:21.755" level="INFO">Get LATEST chromedriver version for google-chrome 106.0.5249</msg>
+<msg timestamp="20221018 05:03:21.873" level="INFO">There is no [linux64] chromedriver for browser 106.0.5249 in cache</msg>
+<msg timestamp="20221018 05:03:21.873" level="INFO">About to download new driver from https://chromedriver.storage.googleapis.com/106.0.5249.61/chromedriver_linux64.zip</msg>
+<msg timestamp="20221018 05:03:22.761" level="INFO">Driver has been saved in cache [/root/.wdm/drivers/chromedriver/linux64/106.0.5249]</msg>
+<msg timestamp="20221018 05:03:22.762" level="INFO">/root/.wdm/drivers/chromedriver/linux64/106.0.5249/chromedriver</msg>
+<msg timestamp="20221018 05:03:22.762" level="INFO">[WDM] - Downloading:   0%|          | 0.00/6.35M [00:00&lt;?, ?B/s][WDM] - Downloading:  23%|##3       | 1.46M/6.35M [00:00&lt;00:00, 15.2MB/s][WDM] - Downloading:  46%|####5     | 2.91M/6.35M [00:00&lt;00:00, 13.0MB/s][WDM] - Downloading:  66%|######5   | 4.17M/6.35M [00:00&lt;00:00, 12.4MB/s][WDM] - Downloading:  85%|########4 | 5.37M/6.35M [00:00&lt;00:00, 12.1MB/s][WDM] - Downloading: 100%|##########| 6.35M/6.35M [00:00&lt;00:00, 12.4MB/s]</msg>
+<msg timestamp="20221018 05:03:22.764" level="INFO">${driver_path} = /root/.wdm/drivers/chromedriver/linux64/106.0.5249/chromedriver</msg>
+<status status="PASS" starttime="20221018 05:03:21.699" endtime="20221018 05:03:22.764"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("no-sandbox")</arg>
+<arg>executable_path=${driver_path}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20221018 05:03:22.765" level="INFO">Opening browser 'headlesschrome' to base url 'https://www.ebay.com'.</msg>
+<status status="PASS" starttime="20221018 05:03:22.764" endtime="20221018 05:03:24.897"/>
+</kw>
+<status status="PASS" starttime="20221018 05:03:21.699" endtime="20221018 05:03:24.897"/>
+</kw>
+<kw name="Input Search Text and Click Search" library="HeaderPage">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${SEARCH_TEXT}</arg>
+<arg>${INPUT_TEXT}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20221018 05:03:24.899" level="INFO">Typing text 'robot' into text field 'xpath://*[@id="gh-ac"]'.</msg>
+<status status="PASS" starttime="20221018 05:03:24.898" endtime="20221018 05:03:25.140"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${CLICK_BUTTON}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20221018 05:03:25.140" endtime="20221018 05:03:25.170"/>
+</kw>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${CLICK_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20221018 05:03:25.171" level="INFO">Clicking button 'xpath://*[@id="gh-btn"]'.</msg>
+<status status="PASS" starttime="20221018 05:03:25.170" endtime="20221018 05:03:26.991"/>
+</kw>
+<status status="PASS" starttime="20221018 05:03:24.898" endtime="20221018 05:03:26.991"/>
+</kw>
+<kw name="Verify search Results" library="SearchResultsPage">
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${SEARCH_RESULT} ${INPUT_TEXT}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20221018 05:03:27.094" level="INFO">Current page contains text 'results for robot'.</msg>
+<status status="PASS" starttime="20221018 05:03:26.992" endtime="20221018 05:03:27.094"/>
+</kw>
+<status status="PASS" starttime="20221018 05:03:26.991" endtime="20221018 05:03:27.094"/>
+</kw>
+<kw name="Finish TestCase" library="CommonFunctionality" type="TEARDOWN">
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20221018 05:03:27.097" endtime="20221018 05:03:27.175"/>
+</kw>
+<status status="PASS" starttime="20221018 05:03:27.096" endtime="20221018 05:03:27.176"/>
+</kw>
+<doc>This test case verifies the basic search</doc>
+<tag>Functional</tag>
+<status status="PASS" starttime="20221018 05:03:21.697" endtime="20221018 05:03:27.176"/>
+</test>
+<doc>Basic Search Functionality</doc>
+<status status="PASS" starttime="20221018 05:03:21.480" endtime="20221018 05:03:27.177"/>
+</suite>
+<status status="PASS" starttime="20221018 05:03:21.458" endtime="20221018 05:03:27.182"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">Functional</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tests">Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Search Functionality">Tests.Search Functionality</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
